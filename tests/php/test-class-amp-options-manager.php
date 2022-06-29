@@ -125,6 +125,8 @@ class Test_AMP_Options_Manager extends TestCase {
 				Sandboxing::OPTION_ENABLED       => false,
 				Sandboxing::OPTION_LEVEL         => 1,
 				Option::USE_NATIVE_IMG_TAG       => false,
+				Option::GALLERY_CAROUSEL         => false,
+				Option::GALLERY_LIGHTBOX         => false,
 			],
 			AMP_Options_Manager::get_options()
 		);
