@@ -90,6 +90,12 @@ class AMP_Core_Block_Handler extends AMP_Base_Embed_Handler {
 			return $block_content; // @codeCoverageIgnore
 		}
 
+		if ( 'core/gallery' === $block['blockName'] ) {
+			$amp_options                   = AMP_Options_Manager::get_options();
+			$block['attrs']['ampCarousel'] = (bool) $amp_options['gallery_carousel'];
+			$block['attrs']['ampLightbox'] = (bool) $amp_options['gallery_lightbox'];
+		}
+
 		if ( isset( $block['attrs'] ) && 'core/shortcode' !== $block['blockName'] ) {
 			$injected_attributes    = '';
 			$prop_attribute_mapping = [
