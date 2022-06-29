@@ -339,6 +339,14 @@ final class OptionsRESTController extends WP_REST_Controller implements Delayed,
 						'type'    => 'boolean',
 						'default' => true,
 					],
+					Option::GALLERY_CAROUSEL         => [
+						'type'    => 'boolean',
+						'default' => false,
+					],
+					Option::GALLERY_LIGHTBOX         => [
+						'type'    => 'boolean',
+						'default' => false,
+					],
 					Option::USE_NATIVE_IMG_TAG       => [
 						'type'    => 'boolean',
 						'default' => false,

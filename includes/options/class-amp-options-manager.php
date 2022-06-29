@@ -39,6 +39,8 @@ class AMP_Options_Manager {
 		Option::PLUGIN_CONFIGURED        => false,
 		Option::DELETE_DATA_AT_UNINSTALL => true,
 		Option::USE_NATIVE_IMG_TAG       => false,
+		Option::GALLERY_CAROUSEL         => false,
+		Option::GALLERY_LIGHTBOX         => false,
 	];
 
 	/**
@@ -324,6 +326,14 @@ class AMP_Options_Manager {
 
 		if ( isset( $new_options[ Option::DELETE_DATA_AT_UNINSTALL ] ) ) {
 			$options[ Option::DELETE_DATA_AT_UNINSTALL ] = (bool) $new_options[ OPTION::DELETE_DATA_AT_UNINSTALL ];
+		}
+
+		if ( isset( $new_options[ Option::GALLERY_CAROUSEL ] ) ) {
+			$options[ Option::GALLERY_CAROUSEL ] = (bool) $new_options[ Option::GALLERY_CAROUSEL ];
+		}
+
+		if ( isset( $new_options[ Option::GALLERY_LIGHTBOX ] ) ) {
+			$options[ Option::GALLERY_LIGHTBOX ] = (bool) $new_options[ Option::GALLERY_LIGHTBOX ];
 		}
 
 		if ( isset( $new_options[ Option::USE_NATIVE_IMG_TAG ] ) ) {

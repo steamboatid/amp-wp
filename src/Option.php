@@ -167,6 +167,20 @@ interface Option {
 	const DELETE_DATA_AT_UNINSTALL = 'delete_data_at_uninstall';
 
 	/**
+	 * The key of the option storing whether to show gallery as carousel.
+	 *
+	 * @var string
+	 */
+	const GALLERY_CAROUSEL = 'gallery_carousel';
+
+	/**
+	 * The key of the option storing whether to show gallery as lightbox.
+	 *
+	 * @var string
+	 */
+	const GALLERY_LIGHTBOX = 'gallery_lightbox';
+
+	/**
 	 * The key of the option storing whether to use native img tag instead of amp-img tag.
 	 *
 	 * @var string
