@@ -55,6 +55,8 @@ import { PluginSuppression } from './plugin-suppression';
 import { Analytics } from './analytics';
 import { PairedUrlStructure } from './paired-url-structure';
 import { MobileRedirection } from './mobile-redirection';
+import { GalleryCarousel } from './gallery-carousel';
+import { GalleryLightbox } from './gallery-lightbox';
 import { DeveloperTools } from './developer-tools';
 import { SiteScan } from './site-scan';
 import { ToggleUseNativeImgTag } from './toggle-use-native-img-tag';
@@ -349,6 +351,8 @@ function Root( { appRoot } ) {
 					initialOpen={ 'other-settings' === focusedSection }
 				>
 					<MobileRedirection />
+					<GalleryCarousel />
+					<GalleryLightbox />
 					{ HAS_DEPENDENCY_SUPPORT && (
 						<DeveloperTools />
 					) }
