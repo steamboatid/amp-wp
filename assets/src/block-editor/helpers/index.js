@@ -31,21 +31,6 @@ export const addAMPAttributes = ( settings, name ) => {
 		return settings;
 	}
 
-	// AMP Carousel and AMP Lightbox settings.
-	if ( 'core/gallery' === name ) {
-		if ( ! settings.attributes ) {
-			settings.attributes = {};
-		}
-		settings.attributes.ampCarousel = {
-			type: 'boolean',
-			default: ! select( 'amp/block-editor' )?.hasThemeSupport(), // @todo We could just default this to false now even in Reader mode since block styles are loaded.
-		};
-		settings.attributes.ampLightbox = {
-			type: 'boolean',
-			default: false,
-		};
-	}
-
 	// Add AMP Lightbox settings.
 	if ( 'core/image' === name ) {
 		if ( ! settings.attributes ) {
@@ -190,15 +175,6 @@ export const filterBlocksEdit = ( BlockEdit ) => {
 			);
 		}
 
-		if ( isSelected && 'core/gallery' === name ) {
-			return (
-				<>
-					<BlockEdit { ...props } />
-					<GalleryBlockLayoutAttributes { ...props } />
-				</>
-			);
-		}
-
 		return <BlockEdit { ...props } />;
 	};
 
@@ -306,21 +282,6 @@ const ImageBlockLayoutAttributes = ( props ) => {
 ImageBlockLayoutAttributes.propTypes = {
 	clientId: PropTypes.string,
 };
-
-/**
- * Inspector controls for Gallery block.
- *
- * @param {Object} props Props.
- * @return {Object} Inspector Controls.
- */
-const GalleryBlockLayoutAttributes = ( props ) => (
-	<InspectorControls>
-		<PanelBody title={ __( 'AMP Settings', 'amp' ) }>
-			<AmpLightboxToggle { ...props } />
-			<AmpCarouselToggle { ...props } />
-		</PanelBody>
-	</InspectorControls>
-);
 
 /**
  * Determines whether AMP is enabled for the current post or not.
