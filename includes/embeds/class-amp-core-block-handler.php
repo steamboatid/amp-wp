@@ -91,9 +91,15 @@ class AMP_Core_Block_Handler extends AMP_Base_Embed_Handler {
 		}
 
 		if ( 'core/gallery' === $block['blockName'] ) {
-			$amp_options                   = AMP_Options_Manager::get_options();
-			$block['attrs']['ampCarousel'] = (bool) $amp_options['gallery_carousel'];
-			$block['attrs']['ampLightbox'] = (bool) $amp_options['gallery_lightbox'];
+			$amp_options = AMP_Options_Manager::get_options();
+
+			if ( $amp_options['gallery_carousel'] ) {
+				$block['attrs']['ampCarousel'] = true;
+			}
+
+			if ( $amp_options['gallery_lightbox'] ) {
+				$block['attrs']['ampLightbox'] = true;
+			}
 		}
 
 		if ( isset( $block['attrs'] ) && 'core/shortcode' !== $block['blockName'] ) {
