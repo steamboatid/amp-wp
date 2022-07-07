@@ -404,6 +404,20 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 			$node_attributes = AMP_DOM_Utils::get_node_attributes_as_assoc_array( $node );
 			$attributes      = $this->maybe_add_lightbox_attributes( $node_attributes, $node ); // @todo AMP doesn't support lightbox on <img> yet.
 
+			/*
+			 * Mark lightbox as px-verified attribute until it's supported by AMP spec.
+			 * @see <https://github.com/ampproject/amp-wp/issues/7152#issuecomment-1157933188>
+			 * @todo Remove this once lightbox is added in `lightboxable-elements` for native img tag in AMP spec.
+			 */
+			if ( isset( $attributes['data-amp-lightbox'] ) || $node->hasAttribute( Attribute::LIGHTBOX ) ) {
+				$node_attr = $node->getAttributeNode( Attribute::LIGHTBOX );
+				if ( ! $node_attr instanceof DOMAttr ) {
+					$node_attr = $this->dom->createAttribute( Attribute::LIGHTBOX );
+					$node->setAttributeNode( $node_attr );
+				}
+				ValidationExemption::mark_node_as_px_verified( $node_attr );
+			}
+
 			// Set decoding=async by default. See <https://core.trac.wordpress.org/ticket/53232>.
 			if ( ! $node->hasAttribute( Attribute::DECODING ) ) {
 				$attributes[ Attribute::DECODING ] = 'async';
